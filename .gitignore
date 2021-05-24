@@ -1,0 +1,9 @@
+mock/
+htmlcov
+.coverage
+build
+__pycache__/
+output
+available.md
+*.pyc
+.token

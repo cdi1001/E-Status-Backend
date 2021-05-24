@@ -1,0 +1,499 @@
+@import url(https://fonts.googleapis.com/css?family=Rubik:300,300i,400,400i,500);
+
+body {
+    color: #2a2b2c;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+    color: #0066cc;
+    text-decoration: none;
+}
+
+.main {
+    margin-top: 5rem;
+    max-width: 900px;
+    text-align: center;
+}
+
+/* Top header */
+
+.company {
+    font-size: 3.2rem;
+    font-weight: 400;
+    margin-bottom: 6rem;
+}
+
+.company-logo {
+    display: inline-block;
+    height: 1.4em;
+    width: auto;
+    vertical-align: -.25em;
+    margin-right: .2em;
+}
+
+.header {
+    margin-bottom: 0;
+    font-weight: 500;
+    font-size: 4.5rem;
+}
+
+.subheader {
+    margin-top: .6em;
+    font-size: 3rem;
+}
+
+.header-image {
+    padding-top: 8rem;
+}
+
+.header-image img {
+    max-height: 300px;
+    max-width: 900px;
+    width: auto;
+    height: auto;
+}
+
+.status-container {
+    margin-top: 7rem;
+    margin-bottom: 7rem;
+}
+
+/* Metrics section */
+
+.server-area {
+    margin-top: 4rem;
+}
+
+.server-header {
+    position: relative;
+    margin-bottom: 5rem;
+}
+
+.server-title {
+    font-size: 3rem;
+    border-bottom: 1px #dddedf solid;
+    padding-bottom: .3em;
+}
+
+.server-sub-title {
+    font-size: 1.5rem;
+    position: absolute;
+    bottom: -3rem;
+}
+
+.text-left {
+    text-align: left;
+    left: 0px;
+}
+
+.text-right {
+    text-align: right;
+    right: 0px;
+}
+
+.arrow_box {
+    position: absolute;
+    background: #88b7d5;
+    border: 2px solid #c2e1f5;
+    width: 180px;
+    border-radius: 10px;
+    padding: 10px;
+    top: -60px;
+    left: 0px;
+}
+.arrow_box:after, .arrow_box:before {
+    top: 100%;
+    left: 50%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+}
+
+.arrow_box:after {
+    border-color: rgba(136, 183, 213, 0);
+    border-top-color: #88b7d5;
+    border-width: 10px;
+    margin-left: 31.1%;
+    border-left: 0 solid transparent;
+}
+.arrow_box:before {
+    border-color: rgba(194, 225, 245, 0);
+    border-top-color: #c2e1f5;
+    border-width: 14px;
+    margin-left: 30.5%;
+    border-left: 0 solid transparent;
+}
+
+.image-section {
+    position: relative;
+}
+
+.secondary-metric {
+    display: block;
+}
+
+
+/* Circle filled module */
+
+.circle-filled,
+.square-filled {
+    background-color: #0066cc;
+    color: #FFF;
+    width: 150px;
+    height: 150px;
+}
+
+.circle-filled {
+    border-radius: 50%;
+}
+
+.square-filled {
+    border-radius: 20%;
+}
+
+.filled-stat-title {
+    font-size: 1.8rem;
+    font-weight: 400;
+    line-height: 1;
+    padding: 0 25px 0 25px;
+    margin-bottom: 3px;
+}
+
+.filled-number {
+    display: inline-block;
+    font-size: 4rem;
+    line-height: .9em;
+    font-weight: 400;
+    margin-top: .1em;
+}
+
+.filled-unit {
+    font-size: 1.2rem;
+    font-weight: 300;
+    margin-bottom: .3em;
+}
+
+.filled-secondary-metric {
+    font-size: 1.3rem;
+    font-weight: 500;
+}
+
+/* Circle frame module */
+.circle-frame,
+.square-frame {
+    border: 2px solid #bbddff;
+    width: 150px;
+    height: 150px;
+}
+
+.circle-frame {
+    border-radius: 50%;
+}
+
+.square-frame {
+    border-radius: 20%;
+}
+
+.frame-metric-stat {
+
+}
+
+.frame-number {
+    display: inline-block;
+    font-size: 4rem;
+    line-height: .9em;
+    font-weight: 400;
+    margin-bottom: .1em;
+    color: #0066cc;
+}
+
+.frame-unit {
+    font-size: 1.4rem;
+    font-weight: 300;
+    margin-bottom: .6em;
+    display: block;
+    line-height: 0.5;
+}
+
+.frame-stat-title {
+    color: #0066cc;
+    font-size: 1.8rem;
+    font-weight: 400;
+    margin-bottom: .1em;
+    line-height: 1.3;
+}
+
+.frame-secondary-metric {
+    color: #4a4b4c;
+    font-size: 1.3rem;
+    font-weight: 500;
+}
+
+.circle-center {
+
+}
+/* end circle-frame module */
+
+.tech-stack {
+    margin-top: 20px;
+    width: 40%;
+    margin: 0 auto;
+}
+
+.tech-stack p {
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+.tech-stack .stack-item {
+    border-radius: 12px;
+    background-color: #0066cc;
+    color: #FFF;
+    padding: 0.6rem;
+    line-height: 2.5;
+    white-space: nowrap;
+}
+
+/* footer */
+.footer {
+    margin-top: 6rem;
+    margin-bottom: 3rem;
+    height: 4rem;
+}
+
+/* Addition to grid layout */
+
+.row .column {
+    margin: 2rem 0;
+}
+
+.column-100 {
+    flex: 0 0 100% !important;
+    max-width: 100%;
+}
+
+.flex-wrap {
+    flex-wrap: wrap;
+}
+
+.center-horizontal-child {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Styling from statuspage.io */
+
+.page-status {
+    position: relative;
+    font-weight: 400;
+    border-radius: 4px;
+    color: #ffffff;
+    text-align: left;
+}
+
+.page-status .font-large {
+    font-size: 2rem;
+    display: inline-block;
+    padding: .2em 0;
+    margin-left: 2rem;
+}
+
+.page-status .last-updated-stamp {
+    position: absolute;
+    right: 2rem;
+    top: 50%;
+    height: 1em;
+    line-height: 1em;
+    margin-top: -.5em;
+}
+
+.page-status .last-updated-stamp a {
+    color: #ffffff;
+    text-decoration: underline;
+    font-size: 1.3em;
+    font-weight: 500;
+}
+
+.page-status .last-updated-stamp a:hover {
+    text-decoration: none;
+}
+
+@media screen and (max-width: 650px) {
+    .page-status .font-large {
+        font-size:18px;
+        line-height: 26.55px;
+        font-size: 1.125rem;
+        line-height: 1.65938rem
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .page-status .font-large {
+        font-size:16px;
+        line-height: 24px;
+        font-size: 1rem;
+        line-height: 1.5rem
+    }
+}
+
+.font-small,small {
+    font-size: 14px;
+    line-height: 21.35px;
+    font-size: 0.875rem;
+    line-height: 1.33438rem
+}
+
+/* BODY BACKGROUND */ /* BODY BACKGROUND */ /* BODY BACKGROUND */ /* BODY BACKGROUND */ /* BODY BACKGROUND */
+body,
+.layout-content.status.status-api .section .example-container .example-opener .color-secondary,
+.grouped-items-selector {
+background-color:#ffffff;
+}
+
+/* PRIMARY FONT COLOR */ /* PRIMARY FONT COLOR */ /* PRIMARY FONT COLOR */ /* PRIMARY FONT COLOR */
+body.status,
+.color-primary,
+.color-primary:hover,
+.layout-content.status-index .status-day .update-title.impact-none a,
+.layout-content.status-index .status-day .update-title.impact-none a:hover,
+.layout-content.status-index .timeframes-container .timeframe.active,
+.layout-content.status-full-history .month .incident-container .impact-none,
+.incidents-list .incident-title.impact-none a,
+.layout-content.status .grouped-items-selector.inline .grouped-item.active {
+    color: #333333;
+}
+
+.components-statuses .component-container .name {
+    color:#333333;
+    color:rgba(51,51,51,.8);
+}
+
+/* SECONDARY FONT COLOR */ /* SECONDARY FONT COLOR */ /* SECONDARY FONT COLOR */ /* SECONDARY FONT COLOR */
+small,
+.layout-content.status .table-row .date,
+.color-secondary,
+.layout-content.status .grouped-items-selector.inline .grouped-item {
+    color: #AAAAAA;
+}
+
+/* BORDER COLOR */  /* BORDER COLOR */  /* BORDER COLOR */  /* BORDER COLOR */  /* BORDER COLOR */  /* BORDER COLOR */
+body.status .layout-content.status .border-color, hr, .tooltip-base, .markdown-display table {
+
+}
+
+.markdown-display table td {
+    border-top-color: #E0E0E0;
+}
+
+.markdown-display table td + td, .markdown-display table th + th {
+    border-left-color: #E0E0E0;
+}
+
+/* CSS REDS */ /* CSS REDS */ /* CSS REDS */ /* CSS REDS */ /* CSS REDS */ /* CSS REDS */ /* CSS REDS */
+.status-day .update-title.impact-critical a,
+.status-day .update-title.impact-critical a:hover,
+.page-status.status-critical,
+.unresolved-incident.impact-critical .incident-title,
+.flat-button.background-red {
+    background-color: #b70000;
+}
+.layout-content.status-index .components-statuses .component-container.status-red:after,
+.layout-content.status-full-history .month .incident-container .impact-critical,
+.layout-content.status-incident .incident-name.impact-critical,
+.incidents-list .incident-title.impact-critical a,
+.status-red .icon-indicator,
+.components-container .component-inner-container.status-red .component-status,
+.components-container .component-inner-container.status-red .icon-indicator {
+    color: #b70000;
+}
+
+.unresolved-incident.impact-critical .updates {
+    border-color:#b70000;
+}
+
+/* CSS ORANGES */ /* CSS ORANGES */ /* CSS ORANGES */ /* CSS ORANGES */ /* CSS ORANGES */ /* CSS ORANGES */
+.status-day .update-title.impact-major a,
+.status-day .update-title.impact-major a:hover,
+.page-status.status-major,
+.unresolved-incident.impact-major .incident-title {
+    background-color: #e84630;
+}
+.layout-content.status-index .components-statuses .component-container.status-orange:after,
+.layout-content.status-full-history .month .incident-container .impact-major,
+.layout-content.status-incident .incident-name.impact-major,
+.incidents-list .incident-title.impact-major a,
+.status-orange .icon-indicator,
+.components-container .component-inner-container.status-orange .component-status,
+.components-container .component-inner-container.status-orange .icon-indicator {
+    color: #e84630;
+}
+
+.unresolved-incident.impact-major .updates {
+    border-color: #e84630;
+}
+
+/* CSS YELLOWS */ /* CSS YELLOWS */ /* CSS YELLOWS */ /* CSS YELLOWS */ /* CSS YELLOWS */ /* CSS YELLOWS */
+.status-day .update-title.impact-minor a,
+.status-day .update-title.impact-minor a:hover,
+.page-status.status-minor,
+.unresolved-incident.impact-minor .incident-title,
+.scheduled-incidents-container .tab {
+    background-color: #d9a238;
+}
+.layout-content.status-index .components-statuses .component-container.status-yellow:after,
+.layout-content.status-full-history .month .incident-container .impact-minor,
+.layout-content.status-incident .incident-name.impact-minor,
+.incidents-list .incident-title.impact-minor a,
+.status-yellow .icon-indicator,
+.components-container .component-inner-container.status-yellow .component-status,
+.components-container .component-inner-container.status-yellow .icon-indicator {
+    color: #d9a238;
+}
+
+.unresolved-incident.impact-minor .updates,
+.scheduled-incidents-container {
+    border-color:#d9a238;
+}
+
+/* CSS BLUES */ /* CSS BLUES */ /* CSS BLUES */ /* CSS BLUES */ /* CSS BLUES */ /* CSS BLUES */
+.status-day .update-title.impact-maintenance a,
+.status-day .update-title.impact-maintenance a:hover,
+.page-status.status-maintenance,
+.unresolved-incident.impact-maintenance .incident-title,
+.scheduled-incidents-container .tab {
+    background-color: #0066cc;
+}
+
+.layout-content.status-index .components-statuses .component-container.status-blue:after,
+.layout-content.status-full-history .month .incident-container .impact-maintenance,
+.layout-content.status-incident .incident-name.impact-maintenance,
+.incidents-list .incident-title.impact-maintenance a,
+.status-blue .icon-indicator,
+.components-container .component-inner-container.status-blue .component-status,
+.components-container .component-inner-container.status-blue .icon-indicator {
+    color: #0066cc;
+}
+
+.unresolved-incident.impact-maintenance .updates,
+.scheduled-incidents-container {
+    border-color:#0066cc;
+}
+
+/* CSS GREENS */ /* CSS GREENS */ /* CSS GREENS */ /* CSS GREENS */ /* CSS GREENS */ /* CSS GREENS */ /* CSS GREENS */
+.page-status.status-none {
+    background-color: #9ac122;
+}
+.layout-content.status-index .components-statuses .component-container.status-green:after,
+.status-green .icon-indicator,
+.components-container .component-inner-container.status-green .component-status,
+.components-container .component-inner-container.status-green .icon-indicator {
+    color: #9ac122;
+}
+
+

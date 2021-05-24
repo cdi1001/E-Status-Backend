@@ -1,0 +1,117 @@
+# Calculation of metrics that can be made
+# max
+# average
+# median
+# sum
+# min
+
+# Size, valid sizes are the following 10, 20, 25, 33, 34, 50, 60, 66, 67, 75, 80, 90, 100
+
+general:
+    company: Acme Corporation
+    header: Acme servers performs top notch
+    sub-header: If something goes wrong, dont blame use, blame the servers.
+    header-image: main-image.png
+    company-logo: logo.png
+    statuspage: serverdensity # url, optional. The url of your statuspage.io. Fetches the status on load.
+    load-balanced: False # optional, by default this is true
+    stack:
+        - Php
+        - Python
+        - Storm
+    round: 0 # optional, defaults to 2. It rounds numbers to X digits when number is less than 1. Otherwise in gives you whole numbers.
+infrastructure:
+    - title: API Load Balancers
+      subtitle: Serving thousands of requests a day
+      image_layout: left # optional, sets the image on either left or right of the metrics. Omit it for no image.
+      title_layout: left # optional, defaults to left. The title of the group
+      image: kitten.jpg
+      size: 100  # optional, defaults to 100. Set the percentage of how much the group should occupy on the page
+      group: API Load Balancers # Either group or tag is required.
+      tag:  # optional either group or tag is required
+      bubble-description: This metric says it all # optional, sets a bubble above the image.
+      metrics:
+          - metrickey: cpustats.all # The metrickey, you can find your available metrickeys in available.md
+            calculation: # A list of calculations you want to be made on the metric. See at the top of file.
+              - average
+              - max
+            average_title: CPU usage
+            average_unit: queries/s
+            average_stat: 412 # keys ending with _stat are optional, but is useful for when developing to see what the metrics will look like.
+            max_title: Peak
+            max_unit: q/s
+            max_stat: 1341
+            style: square-filled # These are modules, you can look at the readme and see what modules are available to use.
+          - metrickey: cpustats.nice
+            calculation:
+              - average
+              - max
+            average_title: Nice usage
+            average_unit: percent
+            average_stat: 10
+            max_title: Peak
+            max_unit: M
+            max_stat: 7
+    - title: Some other stats
+      subtitle: Serving thousands of requests a day
+      image_layout: left
+      title_layout: left
+      image: kitten.jpg
+      size: 50
+      group: API Load Balancers
+      tag:
+      bubble-description: This metric says it all
+      metrics:
+          - metrickey: cpustats.all
+            calculation:
+              - average
+              - max
+            average_title: CPU usage
+            average_unit: queries/s
+            average_stat: 412
+            max_title: Peak
+            max_unit: q/s
+            max_stat: 1341
+            style: circle-filled
+          - metrickey: cpustats.nice
+            calculation:
+              - average
+              - max
+            average_title: Nice usage
+            average_unit: percent
+            average_stat: 10
+            max_title: Peak
+            max_unit: M
+            max_stat: 7
+    - title: Third block of stats
+      subtitle: Serving thousands of requests a day
+      image_layout: right
+      title_layout: right
+      image: kitten.jpg
+      size: 50
+      group: API Load Balancers
+      tag:
+      bubble-description: This metric says it all
+      metrics:
+          - metrickey: cpustats.all
+            calculation:
+              - average
+              - max
+            average_title: CPU usage
+            average_unit: queries/s
+            average_stat: 412
+            max_title: Peak
+            max_unit: q/s
+            max_stat: 1341
+            style: circle-filled
+          - metrickey: cpustats.nice
+            calculation:
+              - average
+              - max
+            average_title: Nice usage
+            average_unit: percent
+            average_stat: 10
+            max_title: Peak
+            max_unit: M
+            max_stat: 7
+            style: circle-frame

@@ -1,0 +1,296 @@
+general:
+    company: Server Density
+    company-logo: sdlogo.png
+    header: This is how our infrastructure performs
+    sub-header: Metrics from the last 24 hours.
+    header-image: main-image.png
+    statuspage: serverdensity # url, optional. If used open page to get status.
+    timeframe: 24
+    stack:
+        - Php
+        - Python
+        - MongoDB
+        - Apache Storm
+        - Kafka
+        - Zookeeper
+        - Redis
+        - Nginx
+        - Ubuntu Linux
+    round: 0 # optional
+infrastructure:
+    - title: Api Requests
+      subtitle: Serving thousands of requests a day
+      title_layout: left # optional,
+      size: 100  # optional
+      tag: loadbalancing
+      metrics:
+          - metrickey: plugins.ApiStatsD.TokenProxyHandler_aggregated_count
+            calculation:
+              - sum
+              - max
+            sum_title: Requests via Api
+            sum_unit: per day
+            sum_stat: 412
+            max_title: Peak
+            max_unit: q/s
+            max_stat: 1341
+            style: circle-filled
+          - metrickey: plugins.ApiStatsD.SessionProxyHandler_aggregated_count
+            cumulative: True
+            calculation:
+              - sum
+              - max
+            sum_title: Requests via UI
+            sum_unit: per day
+            max_title: Peak
+            max_unit: q/s
+          - metrickey: memory.memPhysUsed
+            si_unit: mb
+            calculation:
+              - average
+            average_title: Used memory
+          - metrickey: cpuStats.ALL.usr
+            cumulative: False
+            calculation:
+              - average
+              - max
+            average_title: CPU usage
+            average_unit: percent
+            max_title: Peak
+            max_unit: "%"
+          - metrickey: loadAvrg
+            cumulative: False
+            calculation:
+              - average
+              - max
+            average_title: Load Average
+            average_unit: avg / min
+            max_title: Peak
+    - title: Inventory usage
+      subtitle: How people use our api to look at the inventory
+      title_layout: left # optional,
+      size: 50  # optional
+      group: Cluster1
+      metrics:
+          - metrickey: plugins.StatsD.devices_update_count
+            calculation:
+              - sum
+              - average
+              - max
+            sum_title: Devices updated
+            sum_unit: per day
+            average_title: avg
+            average_unit: / min
+            max_title: Peak
+          - metrickey: plugins.StatsD.devices_view_count
+            calculation:
+              - sum
+              - average
+              - max
+            sum_title: Devices viewed
+            sum_unit: per day
+            average_title: avg
+            average_unit: / min
+            max_title: Peak
+          - metrickey: plugins.StatsD.services_update_count
+            calculation:
+              - sum
+              - average
+              - max
+            sum_title: Services updated
+            sum_unit: per day
+            average_title: avg
+            average_unit: / min
+            max_title: Peak
+          - metrickey: plugins.StatsD.services_view_count
+            calculation:
+              - sum
+              - average
+              - max
+            sum_title: Services viewed
+            sum_unit: per day
+            average_title: avg
+            average_unit: / min
+            max_title: Peak
+    - title: Inventory Servers
+      subtitle: The servers that handle our inventory
+      title_layout: right
+      size: 50
+      group: Cluster1
+      metrics:
+        - calculation:
+            - average
+          average_stat: 2
+          average_title: Servers
+        - metrickey: cpuStats.ALL.usr
+          calculation:
+            - average
+            - max
+          average_title: CPU usage
+          average_unit: percent
+          max_title: Peak
+          max_unit: "%"
+        - metrickey: loadAvrg
+          calculation:
+            - average
+            - max
+          average_title: Load Average
+          max_title: Peak
+        - metrickey: memory.memPhysUsed
+          si_unit: mb
+          calculation:
+            - average
+          average_title: Memory used
+    # - title: Notifications
+    #   subtitle: Notifications is handled by storm, it does a splendid job.
+    #   title_layout: right # optional,
+    #   size: 50  # optional
+    #   tag: storm-notifications
+    #   metrics:
+    #       - metrickey: plugins.StatsD.NotificationsBolt_requests
+    #         calculation:
+    #           - sum
+    #           - max
+    #         sum_title: Sent
+    #         average_title: Sent Notifications
+    #         average_unit: per day
+    #         max_title: Peak
+    #         max_unit: / min
+    - title: Alerts
+      subtitle: The amount of alerts we see every day
+      title_layout: left # optional,
+      size: 100  # optional
+      tag: alerts
+      metrics:
+          - metrickey: plugins.StatsD.triggered_count_count
+            calculation:
+              - sum
+              - max
+            sum_title: Alerts triggered
+            sum_unit: per day
+            max_title: Peak
+            style: circle-filled
+          - metrickey: memory.memPhysUsed
+            si_unit: mb
+            calculation:
+              - average
+            average_title: Memory used
+          - metrickey: cpuStats.ALL.usr
+            cumulative: False
+            calculation:
+              - average
+              - max
+            average_title: CPU usage
+            average_unit: percent
+            max_title: Peak
+            max_unit: "%"
+          - metrickey: loadAvrg
+            cumulative: False
+            calculation:
+              - average
+            average_title: Load Average
+    - title: Website monitoring
+      subtitle: We do a lot of service checks in 24h
+      title_layout: right
+      size: 100
+      group: V2Directors
+      metrics:
+        - metrickey: plugins.StatsD.send_count
+          calculation:
+            - sum
+            - max
+          sum_title: Checks sent
+          sum_unit: per day
+          max_title: Peak
+          max_unit: / min
+          style: circle-filled
+        - metrickey: memory.memPhysUsed
+          si_unit: mb
+          calculation:
+            - average
+          average_title: Memory used
+        - metrickey: cpuStats.ALL.usr
+          cumulative: False
+          calculation:
+            - average
+            - max
+          average_title: CPU usage
+          average_unit: percent
+          max_title: Peak
+          max_unit: "%"
+        - metrickey: loadAvrg
+          cumulative: False
+          calculation:
+            - average
+          average_title: Load Average
+          average_unit: avg / min
+
+    # - title: Inventory
+    #   subtitle: We monitor a lot of devices and services
+    #   image_layout: left
+    #   title_layout: right
+    #   image: kitten.jpg
+    #   size: 100
+    #   tag: hperm
+    #   metrics:
+    #     - metrickey: plugins.InventoryCount.services
+    #       calculation:
+    #         - max
+    #       max_title: Services
+    #     - metrickey: plugins.InventoryCount.non-cloud devices
+    #       calculation:
+    #         - max
+    #       max_title: Devices
+    #     - metrickey: plugins.InventoryCount.cloud devices
+    #       calculation:
+    #         - max
+    #       max_title: Cloud devices
+    - title: Load Balancing
+      subtitle: The total amount of traffic we handle through load balancers
+      title_layout: left
+      group: V2LoadBalancers
+      metrics:
+        - calculation:
+          - average
+          average_title: Servers
+          average_stat: 14
+        - metrickey: networkTraffic.eth0.rxMByteS
+          si_unit: mb
+          calculation:
+            - sum
+            - max
+          sum_title: Traffic recieved internally # internal traffic
+          sum_unit: per day
+          max_title: Peak
+          max_unit: / min
+          multiplier: 60
+        - metrickey: networkTraffic.eth0.txMByteS
+          calculation:
+            - sum
+            - max
+          sum_title: Traffic sent internally
+          si_unit: mb
+          sum_unit: per day
+          max_title: Peak
+          max_unit: / min
+          multiplier: 60
+        - metrickey: networkTraffic.eth1.rxMByteS
+          si_unit: mb
+          calculation:
+            - sum
+            - max
+          sum_title: Traffic recieved externally
+          sum_unit: per day
+          max_title: Peak
+          max_unit: / min
+          multiplier: 60
+        - metrickey: networkTraffic.eth1.txMByteS
+          si_unit: mb
+          calculation:
+            - sum
+            - max
+          sum_title: Traffic sent externally
+          sum_unit: per day
+          max_title: Peak
+          max_unit: / min
+          multiplier: 60

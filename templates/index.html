@@ -1,0 +1,179 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Infrastructure Dashboard - {{ general.company }}</title>
+    <meta name="description" content="Your own dashboard to show off how impressive and well you are managing your infrastructure.">
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/milligram.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.js"></script>
+    <script src="js/main.js"></script>
+    {% if general.statuspage %}
+    <script>
+        $.get( "https://{{ general.statuspage }}.statuspage.io/", function( data ) {
+            doc = $($.parseHTML(data))
+            pagestatus = doc.find('.page-status');
+
+            moreInfo = $.parseHTML(
+                '<a href="https://{{ general.statuspage }}.statuspage.io/">{{ general.statuspage }}.statuspage.io</a>'
+            );
+            $(pagestatus).find('.last-updated-stamp').append(moreInfo);
+            $('.status-container').append(pagestatus);
+        });
+    </script>
+    {% endif %}
+
+{% macro short_no(number, si_unit) -%}
+    {% if si_unit == 'mb' %}
+        {% if number > 1000000000 %}
+            {{ (number/1000000000)|round_with_letter("PB") }}
+        {% elif number > 1000000 %}
+            {{ (number/1000000)|round_with_letter("TB") }}
+        {% elif number > 1000 %}
+            {{ (number/1000)|round_with_letter("GB") }}
+        {% else %}
+            {{ number|round_with_letter("MB") }}
+        {% endif %}
+    {% else %}
+        {% if number > 1000000000 %}
+            {{ (number/1000000000)|round_with_letter("B") }}
+        {% elif number > 1000000 %}
+            {{ (number/1000000)|round_with_letter("M") }}
+        {% elif number > 1000 %}
+            {{ (number/1000)|round_with_letter("K") }}
+        {% else %}
+            {{ number }}
+        {% endif %}
+    {% endif %}
+{%- endmacro %}
+
+{% macro serverimage(server) -%}
+    <div class="image-section column center-horizontal-child">
+    {% if server['bubble-description'] %}
+        <div class="arrow_box">
+            <span>{{ server['bubble-description'] }}</span>
+        </div>
+    {% endif %}
+        <div class="server-image">
+            <img src="images/{{ server.image }}" alt="">
+        </div>
+    </div>
+{%- endmacro %}
+
+{# The style called frame #}
+{% macro frame(metric) -%}
+    <div class="column">
+        <div class="{{metric.style|default('square-frame')}} center-horizontal-child">
+            {% for calculation in metric.calculation %}
+            {% if loop.index == 1 %}
+                <div class="frame-metric-stat">
+                    <span class="frame-number">{{ short_no(metric[calculation + '_stat'], metric.si_unit) }}</span>
+                    <span class="frame-unit">{{ metric[calculation + '_unit'] }}</span>
+                </div>
+                <span class="frame-stat-title">{{ metric[calculation + '_title'] }}</span>
+            {% else %}
+                <span class="frame-secondary-metric">
+                    {{ metric[calculation + '_title'] }}: {{ short_no(metric[calculation + '_stat'], metric.si_unit) }} {{ metric[calculation + '_unit'] }}
+                </span>
+            {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+{%- endmacro %}
+
+{# The style called filled #}
+{% macro filled(metric) -%}
+    <div class="column">
+        <div class="{{metric.style|default('square-frame')}} center-horizontal-child">
+        {% for calculation in metric.calculation %}
+        {% if loop.index == 1 %}
+            <span class="filled-stat-title">{{ metric[calculation + '_title'] }}</span>
+            <span class="filled-number">{{ short_no(metric[calculation + '_stat'], metric.si_unit) }}</span>
+            <span class="filled-unit">{{ metric[calculation + '_unit'] }}</span>
+        {% else %}
+            <span class="filled-secondary-metric">
+                {{ metric[calculation + '_title']}}: {{ short_no(metric[calculation + '_stat'], metric.si_unit) }} {{ metric[calculation + '_unit'] }}
+            </span>
+        {% endif %}
+        {% endfor %}
+        </div>
+    </div>
+{%- endmacro %}
+
+
+</head>
+<body>
+    <div class="container main">
+        <div class="row">
+            <div class="column">
+                <div>
+                    <h1 class="company">
+                        {% if general['company-logo'] %}
+                            <img class="company-logo" src="images/{{ general['company-logo'] }}" alt="">
+                        {% endif %}
+                        {{ general.company }}
+                    </h1>
+                    <h2 class="header">{{ general.header }}</h2>
+                    <h3 class="subheader">{{ general['sub-header'] }}</h3>
+                </div>
+                {% if general['header-image'] %}
+                <div class="header-image">
+                    <img src="images/{{ general['header-image'] }}" alt="">
+                </div>
+                {% endif %}
+                {% if general.statuspage %}
+                <div class="status-container"></div>
+                {% endif %}
+            </div>
+        </div>
+        <div class="row flex-wrap">
+        {% for server in infrastructure %}
+        <div class="column column-{{ server.size|default('100') }} server-area">
+            <div class="server-header">
+                <h1 class="server-title text-{{ server.title_layout|default('left') }}">{{ server.title }}</h1>
+                {% if server.subtitle %}
+                <span class="server-sub-title text-{{ server.title_layout|default('left') }}">{{ server.subtitle }}</span>
+                {% endif %}
+            </div>
+            <div class="row flex-wrap">
+                {% if server.image and server.image_layout == 'left' %}
+                    {{ serverimage(server) }}
+                {% endif %}
+                {# If you add different styles you'll need to add an if statement to check
+                for that here. #}
+                {% for metric in server.metrics %}
+                    {% if  metric.style|default('circle-frame') == 'circle-frame' %}
+                        {{ frame(metric) }}
+                    {% elif  metric.style == 'square-frame' %}
+                        {{ frame(metric) }}
+                    {% elif metric.style == 'circle-filled' %}
+                        {{ filled(metric) }}
+                    {% elif metric.style == 'square-filled' %}
+                        {{ filled(metric) }}
+                    {% endif %} <!-- more styles to display -->
+                {% endfor %}
+
+                {% if server.image and server.image_layout == 'right' %}
+                    {{ serverimage(server) }}
+                {% endif %}
+            </div>
+        </div>
+        {% endfor %}
+        </div>
+        <div class="tech-stack">
+            {% if general.stack %}
+                <p>Our stack</p>
+                {% for stack in general.stack %}
+                    <span class="stack-item">{{ stack }}</span>
+                {% endfor %}
+            {% endif %}
+        </div>
+        <footer>
+            <div class="column footer">
+                <span>Powered by <a href="https://www.serverdensity.com">Server Density</a></span>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
